@@ -15,7 +15,7 @@ export const product: TProduct[] = [ {
     id: "01",
     name: "blusa",
     price: 30,
-    category: Category_Product.CLOTHES_AND_SHOES
+    category: Category_Product.CLOTHES
 }, {
     id: "02",
     name: "brinco",
@@ -36,8 +36,7 @@ export const purchase: TPurchase []= [{
     totalPrice: 20
 }]
 
-//criar usuário 
-
+//criar usuário (TypeScript)
 function CreateUser (id: string, email: string, password: string): void {
     
     const users: TUser = {id, email, password}
@@ -48,7 +47,7 @@ function CreateUser (id: string, email: string, password: string): void {
 console.log("Criando usuário")
 CreateUser("Mariana", "mariana@email.com", "123")
 
-//Todos os usuários
+//Todos os usuários (TypeScript)
 function getAllUser(): void{
     user.map((users) => {
         console.table(user)
@@ -58,7 +57,7 @@ function getAllUser(): void{
 console.log("Todos os usuários")
 getAllUser()
 
-//Criar produto
+//Criar produto (TypeScript)
 function createProduct (id: string, name: string, price: number, category: Category_Product): void {
     
     const products: TProduct = {id, name, price, category}
@@ -69,7 +68,7 @@ function createProduct (id: string, name: string, price: number, category: Categ
 console.log("Novo produto")
 createProduct("03", "colar", 40, Category_Product.ACCESSORIES)
 
-//Buscar todos os produtos
+//Buscar todos os produtos (TypeScript)
 function getAllProducts():void{
     product.map((products) =>{
         console.table(product)
@@ -79,8 +78,7 @@ function getAllProducts():void{
 console.log("Todos os produtos")
 getAllProducts()
 
-//Buscar produto por id
-
+//Buscar produto por id (TypeScript)
 function getProductById(idSearch: string): void {
     console.table(
         product.find(product => product.id === idSearch)
@@ -90,8 +88,7 @@ function getProductById(idSearch: string): void {
 console.log("Buscar produto pelo Id")
 getProductById("02")
 
-//Buscar produto por nome
-
+//Buscar produto por nome (TypeScript)
 export const getProductByName = (q: string): Array<TProduct> => {
     return product.filter((product) =>{
         return product.name.includes(q)
@@ -100,7 +97,7 @@ export const getProductByName = (q: string): Array<TProduct> => {
 console.table(getProductByName)
 
 
-//Criar nova compra na lista de purchase
+//Criar nova compra na lista de purchase (TypeScript)
 function createPurchase (userId: string, productId: string, quantity: number, totalPrice: number): void {
     
     const purchases: TPurchase = {userId, productId, quantity, totalPrice}
@@ -111,7 +108,7 @@ function createPurchase (userId: string, productId: string, quantity: number, to
 console.log("Realizando compra")
 createPurchase("05", "05", 3, 50)
 
-//Buscar todas as comprar pelo id
+//Buscar todas as comprar pelo id (TypeScript)
 export const getAllPurchasesFromUserId = (userIdSearch: string): Array<TPurchase> => {
     return purchase.filter((purchase) => {
         return purchase.userId.includes(userIdSearch)
