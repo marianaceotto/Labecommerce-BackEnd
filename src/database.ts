@@ -48,8 +48,7 @@ function CreateUser (id: string, email: string, password: string): void {
 console.log("Criando usuário")
 CreateUser("Mariana", "mariana@email.com", "123")
 
-//mostrar usuários
-
+//Todos os usuários
 function getAllUser(): void{
     user.map((users) => {
         console.table(user)
@@ -59,8 +58,7 @@ function getAllUser(): void{
 console.log("Todos os usuários")
 getAllUser()
 
-//criar produto
-
+//Criar produto
 function createProduct (id: string, name: string, price: number, category: Category_Product): void {
     
     const products: TProduct = {id, name, price, category}
@@ -71,8 +69,7 @@ function createProduct (id: string, name: string, price: number, category: Categ
 console.log("Novo produto")
 createProduct("03", "colar", 40, Category_Product.ACCESSORIES)
 
-//buscar todos os produtos
-
+//Buscar todos os produtos
 function getAllProducts():void{
     product.map((products) =>{
         console.table(product)
@@ -82,7 +79,7 @@ function getAllProducts():void{
 console.log("Todos os produtos")
 getAllProducts()
 
-//buscar produto por id
+//Buscar produto por id
 
 function getProductById(idSearch: string): void {
     console.table(
@@ -93,7 +90,7 @@ function getProductById(idSearch: string): void {
 console.log("Buscar produto pelo Id")
 getProductById("02")
 
-//buscar produto por nome
+//Buscar produto por nome
 
 export const getProductByName = (q: string): Array<TProduct> => {
     return product.filter((product) =>{
@@ -103,7 +100,7 @@ export const getProductByName = (q: string): Array<TProduct> => {
 console.table(getProductByName)
 
 
-//criar nova compra na lista de purchase
+//Criar nova compra na lista de purchase
 function createPurchase (userId: string, productId: string, quantity: number, totalPrice: number): void {
     
     const purchases: TPurchase = {userId, productId, quantity, totalPrice}
@@ -114,10 +111,12 @@ function createPurchase (userId: string, productId: string, quantity: number, to
 console.log("Realizando compra")
 createPurchase("05", "05", 3, 50)
 
-//buscar todas as comprar pelo id
+//Buscar todas as comprar pelo id
 export const getAllPurchasesFromUserId = (userIdSearch: string): Array<TPurchase> => {
     return purchase.filter((purchase) => {
         return purchase.userId.includes(userIdSearch)
     })
 }
 console.table(getAllPurchasesFromUserId)
+
+
