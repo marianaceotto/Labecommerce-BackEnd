@@ -36,7 +36,7 @@ export const purchase: TPurchase []= [{
     totalPrice: 20
 }]
 
-//criar usuário (TypeScript)
+//Criar usuário (TypeScript)
 function CreateUser (id: string, email: string, password: string): void {
     
     const users: TUser = {id, email, password}
