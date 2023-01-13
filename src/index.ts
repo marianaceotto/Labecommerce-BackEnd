@@ -17,14 +17,16 @@ app.get("/users", (req: Request, res: Response) => {
     try {
         res.status(200).send(user)
 
-    } catch (error: any) {
+    } catch (error) {
         console.log(error)
         
         if (res.statusCode === 200) {
             res.status(500)
         }
 
-        res.send(error.message)
+        if (error instanceof Error) {
+            res.send(error.message)
+        } 
     }
     
 } )
@@ -34,14 +36,16 @@ app.get("/product", (req: Request, res: Response) => {
     try {
         res.status(200).send(product)
 
-    } catch (error: any) {
+    } catch (error) {
         console.log(error)
         
         if (res.statusCode === 200) {
             res.status(500)
         }
 
-        res.send(error.message)
+        if (error instanceof Error) {
+            res.send(error.message)
+        } 
     }
 })
 
@@ -80,14 +84,16 @@ app.post('/users', (req: Request, res: Response) => {
     user.push(newUser)
     res.status(201).send("Cadastro realizado com sucesso.")
         
-    } catch (error: any) {
+    } catch (error) {
         console.log(error)
         
         if (res.statusCode === 200) {
             res.status(500)
         }
 
-        res.send(error.message)
+        if (error instanceof Error) {
+            res.send(error.message)
+        } 
     }
 
 })
@@ -120,14 +126,15 @@ app.post('/product', (req: Request, res: Response) => {
     res.status(201).send("Produto criado com sucesso.")
 
 
-    } catch (error: any) {
+    } catch (error) {
         console.log(error)
         
         if (res.statusCode === 200) {
             res.status(500)
         }
-
-        res.send(error.message)
+        if (error instanceof Error) {
+            res.send(error.message)
+        } 
     }
     
 })
@@ -174,14 +181,15 @@ app.post('/purchase', (req: Request, res: Response) => {
     purchase.push(newPurchase)
     res.status(201).send("Compra realizada com sucesso.")
 
-    } catch (error: any) {
+    } catch (error) {
         console.log(error)
         
         if (res.statusCode === 200) {
             res.status(500)
         }
-
-        res.send(error.message)
+        if (error instanceof Error) {
+            res.send(error.message)
+        } 
     }
     })
 
@@ -200,14 +208,16 @@ app.get("/product/search", (req: Request, res: Response) => {
 
         res.status(200).send(productSearch)   
         
-    } catch (error: any) {
+    } catch (error) {
         console.log(error)
         
         if (res.statusCode === 200) {
             res.status(500)
         }
 
-        res.send(error.message)
+        if (error instanceof Error) {
+            res.send(error.message)
+        } 
     }
     
 } )
@@ -227,14 +237,16 @@ app.get("/product/:id", (req: Request, res: Response) => {
 
         
     res.status(200).send(findProduct)
-    } catch (error: any) {
+    } catch (error) {
         console.log(error)
         
         if (res.statusCode === 200) {
             res.status(500)
         }
 
-        res.send(error.message)
+        if (error instanceof Error) {
+            res.send(error.message)
+        } 
     }
     
 })
@@ -254,14 +266,16 @@ app.get("/users/:id/purchases", (req: Request, res: Response) => {
         }
 
     res.status(200).send(result)
-    } catch (error: any) {
+    } catch (error) {
         console.log(error)
         
         if (res.statusCode === 200) {
             res.status(500)
         }
 
-        res.send(error.message)
+        if (error instanceof Error) {
+            res.send(error.message)
+        } 
     }
     
 })
@@ -286,17 +300,17 @@ app.delete("/users/:id", (req: Request, res: Response) => {
         }
 
     res.status(200).send("User deletado com sucesso.")
-    } catch (error: any) {
+    } catch (error) {
         console.log(error)
         
         if (res.statusCode === 200) {
             res.status(500)
         }
 
-        res.send(error.message)
+        if (error instanceof Error) {
+            res.send(error.message)
+        } 
     }
-    
-    
 })
 
 //Deletar produto pelo Id
@@ -319,14 +333,16 @@ app.delete("/product/:id", (req: Request, res: Response) => {
         }
 
     res.status(200).send("Produto deletado com sucesso.")
-    } catch (error: any) {
+    } catch (error) {
         console.log(error)
         
         if (res.statusCode === 200) {
             res.status(500)
         }
 
-        res.send(error.message)
+        if (error instanceof Error) {
+            res.send(error.message)
+        } 
     }
     
 })
@@ -354,14 +370,16 @@ app.put("/users/:id", (req: Request, res: Response) => {
         }
 
         res.status(200).send("Cadastro atualizado com sucesso.")
-    } catch (error: any) {
+    } catch (error) {
         console.log(error)
         
         if (res.statusCode === 200) {
             res.status(500)
         }
 
-        res.send(error.message)
+        if (error instanceof Error) {
+            res.send(error.message)
+        } 
     }
    
 } )
@@ -393,7 +411,15 @@ app.put("/product/:id", (req: Request, res: Response) => {
 
     res.status(200).send("Produto atualizado com sucesso")
     } catch (error) {
+        console.log(error)
         
+        if (res.statusCode === 200) {
+            res.status(500)
+        }
+
+        if (error instanceof Error) {
+            res.send(error.message)
+        } 
     }
     
 })
