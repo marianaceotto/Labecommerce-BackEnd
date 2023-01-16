@@ -49,6 +49,25 @@ app.get("/product", (req: Request, res: Response) => {
     }
 })
 
+//Todas as compras
+app.get("/purchase", (req: Request, res: Response) => {
+    try {
+        res.status(200).send(purchase)
+
+    } catch (error) {
+        console.log(error)
+        
+        if (res.statusCode === 200) {
+            res.status(500)
+        }
+
+        if (error instanceof Error) {
+            res.send(error.message)
+        } 
+    }
+    
+} )
+
 //Criar usuário
 app.post('/users', (req: Request, res: Response) => {
 
@@ -252,7 +271,7 @@ app.get("/product/:id", (req: Request, res: Response) => {
 })
 
 //Pesquisar array de compras pelo Id
-app.get("/users/:id/purchases", (req: Request, res: Response) => {
+app.get("/users/:id/purchase", (req: Request, res: Response) => {
     try {
         const id = req.params.userId
         const result = purchase.find((purchases) => purchases.userId === id)
@@ -294,7 +313,7 @@ app.delete("/users/:id", (req: Request, res: Response) => {
         //Validar usuário
         const findUser = user.find((user) => user.id === id)
 
-        if (!findUser) {
+        if (findUser) {
             res.status(400)
             throw new Error ("Usuário não existe")
         }
@@ -327,7 +346,7 @@ app.delete("/product/:id", (req: Request, res: Response) => {
         //Validar produto
         const findProduct = product.find((products) => products.id === id)
 
-        if (!findProduct) {
+        if (findProduct) {
             res.status(400)
             throw new Error ("Produto não existe")
         }
@@ -404,7 +423,7 @@ app.put("/product/:id", (req: Request, res: Response) => {
     }
 
     //Validar produto
-    if (!products) {
+    if (products) {
         res.status(400)
         throw new Error ("Produto não existe")
     }
