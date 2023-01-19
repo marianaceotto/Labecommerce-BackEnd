@@ -99,3 +99,33 @@ WHERE
 ORDER BY price ASC;
 
 --------------------------
+
+CREATE TABLE
+    purchases (
+        id TEXT PRIMARY KEY UNIQUE NOT NULL,
+        total_price REAL NOT NULL,
+        paid INTEGER NOT NULL,
+        delivered_at TEXT,
+        buyer_id TEXT NOT NULL,
+        FOREIGN KEY (buyer_id) REFERENCES users (id)
+    );
+
+DROP TABLE purchases;
+
+SELECT * FROM purchases;
+
+INSERT INTO purchases (id, total_price, paid, buyer_id)
+VALUES 
+("pr001", 200, 20, "u001"), 
+("pr002", 60, 0, "u001"),
+("pr003", 19.99, 0, "u002"),
+("pr004", 120, 0, "u003");
+
+UPDATE purchases
+SET delivered_at = datetime('now', 'localtime')
+WHERE id = "pr004";
+
+SELECT * FROM purchases
+INNER JOIN users
+ON buyer_id = users.id
+WHERE users.id="u002"
