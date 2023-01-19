@@ -128,4 +128,38 @@ WHERE id = "pr004";
 SELECT * FROM purchases
 INNER JOIN users
 ON buyer_id = users.id
-WHERE users.id="u002"
+WHERE users.id="u002";
+
+
+--------------------------
+CREATE TABLE purchases_products(
+    purchase_id TEXT NOT NULL,
+    product_id TEXT NOT NULL,
+    quantity INTEGER NOT NULL,
+    FOREIGN KEY (purchase_id) REFERENCES purchases (id),
+    FOREIGN KEY (product_id) REFERENCES products (id)
+);
+
+DROP TABLE purchases_products;
+
+SELECT * FROM purchases_products;
+
+INSERT INTO purchases_products (purchase_id, product_id, quantity)
+VALUES
+("pr001", "p001", 3),
+("pr001", "p002", 2),
+("pr002", "p003", 1);
+
+SELECT 
+purchases.id AS purchasesId,
+purchases.total_price AS totalPrice,
+purchases.paid,
+purchases.buyer_id AS buyerId,
+products.id AS productsId,
+products.name AS productName,
+products.price
+FROM purchases
+LEFT JOIN purchases_products
+ON purchases_products.purchase_id = purchases.id
+INNER JOIN products
+ON purchases_products.product_id = products.id
