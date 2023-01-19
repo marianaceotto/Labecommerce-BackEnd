@@ -10,7 +10,7 @@ export type TProduct = {
     id: string
     name: string
     price: number
-    category: Category_Product
+    category: CATEGORY_PRODUCT
 }
 
 //Compra realizada pelo cliente
@@ -22,8 +22,10 @@ export type TPurchase = {
 }
 
 //enum definindo três categorias de produto
-export enum Category_Product {
-    ACCESSORIES = "Acessorios",
-    CLOTHES = "Roupas",
-    ELECTRONICS = "Eletrônicos"
+export enum CATEGORY_PRODUCT {
+    CLEANING = "Limpeza",
+    FOOD = "Alimentos",
+    BAKERY = "Padaria",
+    HYGIENE = "Higiene",
+    DRINKS = "Bebidas"
 }

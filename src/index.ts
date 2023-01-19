@@ -1,7 +1,7 @@
 import {user, product, purchase} from "./database"
 import express, {Request, Response} from 'express'
 import cors from "cors"
-import { TProduct, TPurchase, TUser, Category_Product } from "./types"
+import { TProduct, TPurchase, TUser, CATEGORY_PRODUCT } from "./types"
 
 const app = express()
 
@@ -410,7 +410,7 @@ app.put("/product/:id", (req: Request, res: Response) => {
 
         const newName = req.body.name as string | undefined
         const newPrice = req.body.price as number 
-        const newCategory = req.body.category as Category_Product | undefined
+        const newCategory = req.body.category as CATEGORY_PRODUCT | undefined
 
         const products = product.find((products) => products.id === id)
 
