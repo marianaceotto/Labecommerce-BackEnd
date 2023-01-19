@@ -1,39 +1,39 @@
-import { TUser, TProduct, TPurchase, Category_Product } from "./types"
+import { TUser, TProduct, TPurchase, CATEGORY_PRODUCT } from "./types"
 
 export const user: TUser [] = [ {
-    id: "01",
-    email: "teste.com",
+    id: "u001",
+    email: "usuario1@gmail.com",
     password: "123"
 }, {
-    id: "02",
-    email: "teste2.com",
+    id: "u002",
+    email: "usuario2@gmail.com",
     password: "456"
 }
 ]
 
 export const product: TProduct[] = [ {
-    id: "01",
-    name: "blusa",
-    price: 30,
-    category: Category_Product.CLOTHES
+    id: "p001",
+    name: "Arroz",
+    price: 11.86,
+    category: CATEGORY_PRODUCT.FOOD
 }, {
-    id: "02",
-    name: "brinco",
-    price: 20,
-    category: Category_Product.ACCESSORIES 
+    id: "p002",
+    name: "Shampoo",
+    price: 18,
+    category: CATEGORY_PRODUCT.HYGIENE
 }
 ]
 
 export const purchase: TPurchase []= [{
-    userId: "01",
-    productId: "01",
+    userId: "pr001",
+    productId: "p001",
     quantity: 2,
-    totalPrice: 30
+    totalPrice: 23.72
 }, {
-    userId: "02",
-    productId: "02",
+    userId: "pr002",
+    productId: "p002",
     quantity: 1,
-    totalPrice: 20
+    totalPrice: 18
 }]
 
 //Criar usuário (TypeScript)
@@ -45,7 +45,7 @@ function CreateUser (id: string, email: string, password: string): void {
 }
 
 console.log("Criando usuário")
-CreateUser("Mariana", "mariana@email.com", "123")
+CreateUser("Mariana", "mariana@gmail.com", "123")
 
 //Todos os usuários (TypeScript)
 function getAllUser(): void{
@@ -58,7 +58,7 @@ console.log("Todos os usuários")
 getAllUser()
 
 //Criar produto (TypeScript)
-function createProduct (id: string, name: string, price: number, category: Category_Product): void {
+function createProduct (id: string, name: string, price: number, category: CATEGORY_PRODUCT): void {
     
     const products: TProduct = {id, name, price, category}
     product.push(products)
@@ -66,7 +66,7 @@ function createProduct (id: string, name: string, price: number, category: Categ
 }
 
 console.log("Novo produto")
-createProduct("03", "colar", 40, Category_Product.ACCESSORIES)
+createProduct("03", "Detergente", 1.99, CATEGORY_PRODUCT.CLEANING)
 
 //Buscar todos os produtos (TypeScript)
 function getAllProducts():void{
@@ -86,7 +86,7 @@ function getProductById(idSearch: string): void {
 }
 
 console.log("Buscar produto pelo Id")
-getProductById("02")
+getProductById("p002")
 
 //Buscar produto por nome (TypeScript)
 export const getProductByName = (q: string): Array<TProduct> => {
@@ -106,7 +106,7 @@ function createPurchase (userId: string, productId: string, quantity: number, to
 }
 
 console.log("Realizando compra")
-createPurchase("05", "05", 3, 50)
+createPurchase("pr003", "p002", 3, 36)
 
 //Buscar todas as comprar pelo id (TypeScript)
 export const getAllPurchasesFromUserId = (userIdSearch: string): Array<TPurchase> => {
