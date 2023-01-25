@@ -1,4 +1,4 @@
--- Active: 1674571875442@@127.0.0.1@3306
+-- Active: 1674575895710@@127.0.0.1@3306
 
 ------ Tabela users
 CREATE TABLE users (
@@ -62,7 +62,7 @@ VALUES
 ("p010", "Amaciante", 29.90, "Limpeza", "https://m.media-amazon.com/images/I/71VjJ57rylL._AC_SX425_.jpg"),
 ("p011", "Pão francês", 0.40, "Padaria", "https://img.itdg.com.br/tdg/images/recipes/000/002/658/277270/277270_original.jpg?mode=crop&width=710&height=400"), 
 ("p012", "Pão na chapa", 5, "Padaria", "https://i.ytimg.com/vi/rTiOA1L23mU/maxresdefault.jpg"), 
-("p013", "Bolo de laranja", 13, "Padaria", "https://i.ytimg.com/vi/buDd7e5wkuA/maxresdefault.jpg")
+("p013", "Bolo de laranja", 13, "Padaria", "https://i.ytimg.com/vi/buDd7e5wkuA/maxresdefault.jpg"),
 ("p014", "Feijão", 8.29, "Alimentos", "https://cf.shopee.com.br/file/2174952e392f98b1a59e54a7c173ed61"), 
 ("p015", "Macarrão", 6.70, "Alimentos", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZtls_HipSdPw6DCNyedl2aQS61Sx0kM4RWw&usqp=CAU"),
 ("p016", "Milho", 4.99, "Alimentos", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQX-EDBQc3dKihk0p00UXIBHPBTbVPvVT95eQ&usqp=CAU"), 
@@ -87,7 +87,7 @@ UPDATE products
 SET
     name = "Hidratente corporal",
     price = 20.99,
-    category = "Higiene"
+    category = "Higiene",
     imageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnzVgA12hX-RySS4dsrXAZVexwxyx-kUXgOg&usqp=CAU"
 WHERE id = "p004";
 
